@@ -11,9 +11,9 @@ public class AdminRepository
 {
     private readonly string _connectionString;
 
-    public AdminRepository(string connectionString)
+    public AdminRepository()
     {
-        this._connectionString = connectionString;
+        _connectionString = Constants.ConnectionString;
     }
 
     public void AddAdmin(string name,string phoneNumber,string email,string password)

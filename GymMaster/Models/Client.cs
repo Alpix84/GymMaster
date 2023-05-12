@@ -4,17 +4,18 @@ namespace GymMaster.Models;
 
 public class Client
 {
-    private int Id { get; }
-    private string Name { get; set; }
-    private string PhoneNumber { get; set; }
-    private string Email { get; set; }
-    private bool IsDeleted { get; set; }
-    private byte[] Image { get; set; }
-    private DateTime RegistrationDate { get; set; }
-    private string Address { get; set; }
-    private string Barcode { get; set; }
-    private string Notes { get; set; }
-    private string Password { get; set; }
+    public int Id { get; private set; }
+    public string Name { get; private set; }
+    public string PhoneNumber { get; private set; }
+    public string Email { get; private set; }
+    public bool IsDeleted { get; private set; }
+    public byte[] Image { get; private set; }
+    public DateTime RegistrationDate { get; private set; }
+    public string Address { get; private set; }
+    public string Barcode { get; private set; }
+    public string Notes { get; private set; }
+    public string Password { get; private set; }
+
 
     public Client(int id, string name, string phoneNumber, string email, bool isDeleted, byte[] image, DateTime registrationDate, string address, string barcode, string notes, string password)
     {

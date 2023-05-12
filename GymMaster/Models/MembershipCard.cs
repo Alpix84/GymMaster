@@ -2,16 +2,16 @@ namespace GymMaster.Models;
 
 public class MembershipCard
 {
-    private int Id { get; }
-    private string Name { get; set; }
-    private float Price { get; set; }
-    private int ValidDaysNum { get; set; }
-    private int ValidEntriesNum { get; set; }
-    private bool IsDeleted { get; set; }
-    private int GymId { get; set; }
-    private int StartHour { get; set; }
-    private int EndHour { get; set; }
-    private int DailyEntriesNum { get; set; }
+    public int Id { get; private set; }
+    public string Name { get; private set; }
+    public float Price { get; private set; }
+    public int ValidDaysNum { get; private set; }
+    public int ValidEntriesNum { get; private set; }
+    public bool IsDeleted { get; private set; }
+    public int GymId { get; private set; }
+    public int StartHour { get; private set; }
+    public int EndHour { get; private set; }
+    public int DailyEntriesNum { get; private set; }
 
     public MembershipCard(int id, string name, float price, int validDaysNum, int validEntriesNum, bool isDeleted, int gymId, int startHour, int endHour, int dailyEntriesNum)
     {

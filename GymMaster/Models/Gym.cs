@@ -2,9 +2,9 @@ namespace GymMaster.Models;
 
 public class Gym
 {
-    private int Id { get; }
-    private string Name { get; set; }
-    private bool IsDeleted { get; set; }
+    public int Id { get; private set; }
+    public string Name { get; private set; }
+    public bool IsDeleted { get; private set; }
 
     public Gym(int id, string name, bool isDeleted)
     {

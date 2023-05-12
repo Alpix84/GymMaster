@@ -4,16 +4,17 @@ namespace GymMaster.Models;
 
 public class ClientMCards
 {
-    private int Id { get; }
-    private int ClientId { get; set; }
-    private int MembershipId { get; set; }
-    private DateTime BoughtOnDate { get; set; }
-    private string Barcode { get; set; }
-    private int CurrentEntries { get; set; }
-    private float PriceSold { get; set; }
-    private DateTime ValidUntil { get; set; }
-    private DateTime FirstEntry { get; set; }
-    private int GymId { get; set; }
+    public int Id { get; private set; }
+    public int ClientId { get; private set; }
+    public int MembershipId { get; private set; }
+    public DateTime BoughtOnDate { get; private set; }
+    public string Barcode { get; private set; }
+    public int CurrentEntries { get; private set; }
+    public float PriceSold { get; private set; }
+    public DateTime ValidUntil { get; private set; }
+    public DateTime FirstEntry { get; private set; }
+    public int GymId { get; private set; }
+
 
     public ClientMCards(int id, int clientId, int membershipId, DateTime boughtOnDate, string barcode, int currentEntries, float priceSold, DateTime validUntil, DateTime firstEntry, int gymId)
     {
