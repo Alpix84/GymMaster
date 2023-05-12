@@ -1,10 +1,12 @@
+namespace GymMaster.Models;
+
 public class Admin
 {
-    public int Id { get; }
-    public string Name { get; set; }
-    public string PhoneNumber { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
+    private int Id { get; }
+    private string Name { get; set; }
+    private string PhoneNumber { get; set; }
+    private string Email { get; set; }
+    private string Password { get; set; }
 
     public Admin(int id, string name, string phoneNumber, string email, string password)
     {
