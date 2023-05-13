@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using GymMaster.DataAccess;
 using GymMaster.Models;
 using GymMaster.ViewModels;
 
@@ -13,7 +12,7 @@ namespace GymMaster.Views
     /// </summary>
     public partial class MainWindow
     {
-        private AdminRepository _adminRepository = new AdminRepository();
+        private AdminViewModel _adminVM = new();
         private ClientViewModel _clientVM = new();
         public MainWindow()
         {
@@ -22,13 +21,15 @@ namespace GymMaster.Views
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            List<Admin> admins = _adminRepository.GetAllAdmins();
+            List<Admin> admins = _adminVM.GetAdminsList();
             AdminListTextBlock.Text = string.Join(Environment.NewLine, admins.Select(admin => $"ID: {admin.Id}, Name: {admin.Name}, Email: {admin.Email}, Phone Number: {admin.PhoneNumber}"));
         }
         
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Client? client = _clientVM.GetClientByBarcode("12");
+            var clients = _clientVM.GetClientsList();
+            var client = _clientVM.GetClientByBarcode("AABC123");
+            AdminListTextBlock.Text = string.Join(Environment.NewLine, $"{client?.Name}");
         }
 
         
