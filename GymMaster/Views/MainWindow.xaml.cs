@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using GymMaster.DataAccess;
 using GymMaster.Models;
+using GymMaster.ViewModels;
 
 namespace GymMaster.Views
 {
@@ -13,7 +14,7 @@ namespace GymMaster.Views
     public partial class MainWindow
     {
         private AdminRepository _adminRepository = new AdminRepository();
-        private ClientRepository _clientRepository = new ClientRepository();
+        private ClientViewModel _clientVM = new();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,8 +28,7 @@ namespace GymMaster.Views
         
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            List<Client> clients = _clientRepository.GetAllClients();
-            AdminListTextBlock.Text = string.Join(Environment.NewLine, clients.Select(client => $"ID: {client.Id}, Name: {client.Name}, Email: {client.Email}, Phone Number: {client.PhoneNumber}"));
+            Client? client = _clientVM.GetClientByBarcode("12");
         }
 
         
