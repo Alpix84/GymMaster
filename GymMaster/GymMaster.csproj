@@ -8,6 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Images\background1.jpg" />
+      <None Remove="Images\background2.jpg" />
+      <None Remove="Images\logo.jpeg" />
+      <None Remove="Images\profileIcon3.png" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     </ItemGroup>
 
@@ -17,6 +24,17 @@
         <XamlRuntime>Wpf</XamlRuntime>
         <SubType>Designer</SubType>
       </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Views\Login\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Images\background1.jpg" />
+      <Resource Include="Images\background2.jpg" />
+      <Resource Include="Images\logo.jpeg" />
+      <Resource Include="Images\profileIcon3.png" />
     </ItemGroup>
 
 </Project>
