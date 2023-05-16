@@ -5,8 +5,162 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:GymMaster.Views.LoggedInAdmin"
         mc:Ignorable="d"
-        Title="LoggedInAdminWindow" Height="450" Width="800">
-    <Grid>
+        Title="LoggedInAdminWindow" Height="1920" Width="1080"
+        WindowState="Maximized"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        >
+
+    <Border CornerRadius="10"
+            BorderThickness="1">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                <GradientStop Color="#00cc00" Offset="0"/>
+                <GradientStop Color="#ccff99" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                <GradientStop Color="#00cc00" Offset="0"/>
+                <GradientStop Color="#ccff99" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--Navigation menu-->
+            <Border CornerRadius="10,0,0,10"
+                    Grid.Column="0">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#ccff99" Offset="0"/>
+                        <GradientStop Color="#e6ffcc" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <StackPanel>
+                    <!-- LOGO -->
+                    <StackPanel Orientation="Horizontal" Height="35" Margin="15,25,0,40">
+                        <Image Source="/Images/logo.jpeg" Height="30"></Image>
+                        <TextBlock Text="GYM MASTER" Foreground="Black" FontSize="20" FontWeight="Medium"
+                                   VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
+                                
+                    </StackPanel>
+                    
+                    <!-- Menu -->
+                    <!--
+                    <RadioButton Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Icon="Home" Style="{StaticResource menuButtonIcon}" />
+                        </StackPanel>
+                    </RadioButton>
+                    -->
+                </StackPanel>
+
+            </Border>
+
+            <Border CornerRadius="0,10,10,0"
+                    Grid.Column="1">
+
+
+
+            </Border>
+
+        </Grid>
         
-    </Grid>
+        <!--
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="logged in admin window"
+                           Foreground="Black"
+                           FontSize="14"
+                           FontFamily="Ariel"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"
+                           />
+
+            <Button x:Name="btnMinimize"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="black"
+                        FontSize="20"
+                        FontFamily="Ariel"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="White" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightGreen"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="40" Height="30"
+                                    CornerRadius="15"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button x:Name="btnClose"
+                        BorderThickness="0"
+                        Content="x"
+                        Foreground="black"
+                        FontSize="20"
+                        FontFamily="Ariel"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnClose_Click"
+                        >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="White" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightGreen"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="40" Height="30"
+                                    CornerRadius="15"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+        -->
+    </Border>
 </Window>

@@ -7,6 +7,8 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+
+
     <ItemGroup>
       <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     </ItemGroup>
@@ -20,7 +22,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Services\" />
+      <Resource Include="Images\profile.png" />
+      <Resource Include="Images\background1.jpg" />
+      <Resource Include="Images\background2.jpg" />
+      <Resource Include="Images\key.png" />
+      <Resource Include="Images\logo.jpeg" />
     </ItemGroup>
 
 </Project>

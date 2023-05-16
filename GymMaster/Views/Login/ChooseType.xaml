@@ -1,0 +1,236 @@
+﻿<Window x:Class="GymMaster.Views.Login.ChooseType"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GymMaster.Views.Login"
+        mc:Ignorable="d"
+        Title="ChooseType" Height="550" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
+    
+    <Border CornerRadius="50">
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/background1.jpg" />
+        </Border.Background>
+        <Border CornerRadius="12"
+            BorderThickness="5"
+            Opacity="0.954">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                    <GradientStop Color="#00cc00" Offset="0"/>
+                    <GradientStop Color="#ccff99" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#00cc00" Offset="0"/>
+                    <GradientStop Color="#ccff99" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Choose Type"
+                           Foreground="Black"
+                           FontSize="14"
+                           FontFamily="Ariel"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"
+                           />
+
+                <Button x:Name="btnMinimize"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="black"
+                        FontSize="16"
+                        FontFamily="Ariel"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="White" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGreen"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="20" Height="20"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button x:Name="btnClose"
+                        BorderThickness="0"
+                        Content="x"
+                        Foreground="black"
+                        FontSize="16"
+                        FontFamily="Ariel"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnClose_Click"
+                        >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="White" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGreen"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="20" Height="20"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <StackPanel Width="250"
+                            Grid.Row="2"
+                            Orientation="Vertical"
+                            Margin="0,45,0,0"
+                            >
+
+                    <Image Source="/Images/logo.jpeg"
+                           Width="100" Height="100"
+                           />
+
+
+
+                    <TextBlock Text="GYM MASTER"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               Margin="0,20,0,0">
+                    </TextBlock>
+
+                    <TextBlock Text="WELCOME"
+                               Foreground="White"
+                               FontSize="18"
+                               FontWeight="Medium"
+                               FontFamily="Lucida Console"
+                               HorizontalAlignment="Center"
+                               Margin="0,20,0,0">
+                    </TextBlock>
+
+                    <TextBlock Text="Please select your user type"
+                               Foreground="White"
+                               FontSize="16"
+                               FontWeight="Medium"
+                               FontFamily="Ariel"
+                               HorizontalAlignment="Center"
+                               Margin="0,5,0,0">
+                    </TextBlock>
+
+                    <Button x:Name="btnUser"
+                        BorderThickness="0"
+                        Content="USER"
+                        Foreground="black"
+                        FontSize="16"
+                        FontFamily="Ariel"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Margin="0,35,0,0"
+                        Click="btnUser_Click"
+                        >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="White" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightGreen"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+
+                    <Button x:Name="btnAdmin"
+                        BorderThickness="0"
+                        Content="ADMIN"
+                        Foreground="black"
+                        FontSize="16"
+                        FontFamily="Lucida Console"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Margin="0,25,0,0"
+                        Click="btnAdmin_Click"
+                        >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="White" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightGreen"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </Border>
+</Window>
