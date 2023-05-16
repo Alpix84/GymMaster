@@ -6,10 +6,24 @@ namespace GymMaster.ViewModels
 {
     public class AdminViewModel
     {
+        
+        private static AdminViewModel instance;
+    
+        public static AdminViewModel Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AdminViewModel();
+                }
+                return instance;
+            }
+        }
         private static AdminRepository _adminRepository = new();
         private List<Admin> _adminList;
 
-        public AdminViewModel()
+        private AdminViewModel()
         {
             _adminList = _adminRepository.GetAllAdmins();
         }

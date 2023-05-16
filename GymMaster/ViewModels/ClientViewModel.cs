@@ -7,10 +7,24 @@ namespace GymMaster.ViewModels
 {
     public class ClientViewModel
     {
+        private static ClientViewModel? instance;
+    
+        public static ClientViewModel? Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ClientViewModel();
+                }
+                return instance;
+            }
+        }
+        
         private static ClientRepository _clientRepository = new();
         private List<Client> _clientList;
         
-        public ClientViewModel()
+        private ClientViewModel()
         {
             _clientList = _clientRepository.GetAllClients();
         }

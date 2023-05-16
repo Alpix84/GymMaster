@@ -12,8 +12,8 @@ namespace GymMaster.Views
     /// </summary>
     public partial class MainWindow
     {
-        private AdminViewModel _adminVM = new();
-        private ClientViewModel _clientVM = new();
+        private AdminViewModel _adminVM = AdminViewModel.Instance;
+        private ClientViewModel _clientVM = ClientViewModel.Instance;
         public MainWindow()
         {
             InitializeComponent();

@@ -2,7 +2,7 @@ using System;
 
 namespace GymMaster.Models;
 
-public class Client
+public class Client : User
 {
     public int Id { get; private set; }
     public string Name { get; private set; }
