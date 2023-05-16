@@ -19,7 +19,7 @@
         </Border.Background> 
     <Border CornerRadius="12"
             BorderThickness="5"
-            Opacity="0.9">
+            Opacity="0.954">
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
                 <GradientStop Color="#00cc00" Offset="0"/>
@@ -124,11 +124,11 @@
                 <StackPanel Width="250"
                             Grid.Row="2"
                             Orientation="Vertical"
-                            Margin="0,45,0,0">
+                            Margin="0,45,0,0"
+                            >
 
                     <Image Source="/Images/logo.jpeg"
                            Width="100" Height="100"
-                           Opacity="1"
                            />
 
 
@@ -144,7 +144,7 @@
 
                     <TextBlock Text="Email"
                                Foreground="Gray"
-                               FontSize="12"
+                               FontSize="16"
                                FontWeight="Medium"
                                
                                Margin="0,35,0,0">
@@ -152,7 +152,7 @@
                     </TextBlock>
 
                     <TextBox x:Name="txtUser"
-                             FontSize="13"
+                             FontSize="14"
                              FontWeight="Medium"
                              Foreground="White"
                              CaretBrush="LightGray"
@@ -164,14 +164,75 @@
                              Padding="20,0,0,0"
                              >
                         <TextBox.Background>
-                            <ImageBrush ImageSource="/Images/profileIcon3.png"
+                            <ImageBrush ImageSource="/Images/profile.png"
                                         Stretch="None"
                                         AlignmentX="Left"
                                         />
                         </TextBox.Background>
                     </TextBox>
 
+                    <TextBlock Text="Password"
+                               Foreground="Gray"
+                               FontSize="16"
+                               FontWeight="Medium"
+                               
+                               Margin="0,20,0,0">
 
+                    </TextBlock>
+
+                    <PasswordBox x:Name="txtPassword"
+                             FontSize="14"
+                             FontWeight="Medium"
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,1"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0"
+                             >
+                        <PasswordBox.Background>
+                            <ImageBrush ImageSource="/Images/key.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"
+                                        />
+                        </PasswordBox.Background>
+                    </PasswordBox>
+
+                    <Button x:Name="btnLogin"
+                        BorderThickness="0"
+                        Content="LOG IN"
+                        Foreground="black"
+                        FontSize="16"
+                        FontFamily="Ariel"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Margin="0,35,0,0"
+                        Click="btnClose_Click"
+                        >
+                        <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="White" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGreen"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150" Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    </Button>
 
                 </StackPanel>
             

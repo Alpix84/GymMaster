@@ -5,8 +5,52 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:GymMaster.Views.LoggedInClient"
         mc:Ignorable="d"
-        Title="LoggedInClientWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="LoggedInClientWindow" Height="450" Width="800"
+        WindowState="Maximized"
+        WindowStyle="None">
+
+
+    <!--
+    <Border CornerRadius="50">
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/background1.jpg" />
+        </Border.Background>
+    -->
+    <Border CornerRadius="15"
+            BorderThickness="5">
+
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                <GradientStop Color="#00cc00" Offset="0"/>
+                <GradientStop Color="#ccff99" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                <GradientStop Color="#00cc00" Offset="0"/>
+                <GradientStop Color="#ccff99" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+
+
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            
+            <!--Navigation Menu-->
+            <Border CornerRadius="0,0,0,10"
+                    Grid.Column="0"
+                    Background="#ccff99">
+
+                
+
+
+            </Border>
+        </Grid>   
+    </Border>
 </Window>
