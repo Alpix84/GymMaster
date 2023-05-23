@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:GymMaster.Views.LoggedInAdmin"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="LoggedInAdminWindow" Height="1920" Width="1080"
         WindowState="Maximized"
@@ -34,7 +35,7 @@
             </Grid.ColumnDefinitions>
             
             <!--Navigation menu-->
-            <Border CornerRadius="10,0,0,10"
+            <Border CornerRadius="20,0,0,10"
                     Grid.Column="0">
 
                 <Border.Background>
@@ -46,21 +47,56 @@
 
                 <StackPanel>
                     <!-- LOGO -->
-                    <StackPanel Orientation="Horizontal" Height="35" Margin="15,25,0,40">
-                        <Image Source="/Images/logo.jpeg" Height="30"></Image>
-                        <TextBlock Text="GYM MASTER" Foreground="Black" FontSize="20" FontWeight="Medium"
-                                   VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
-                                
-                    </StackPanel>
+                    <Image Source="/Images/logo.jpeg" Height="150" Margin="0,20,0,0"></Image>
+
+                    <TextBlock Text="GYM MASTER" Foreground="Black" FontSize="24" FontWeight="Bold"
+                                   VerticalAlignment="Center" Margin="35,20,0,20"></TextBlock>
+
                     
                     <!-- Menu -->
-                    <!--
-                    <RadioButton Style="{StaticResource menuButton}">
+
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}">
                         <StackPanel Orientation="Horizontal">
-                            <Image Icon="Home" Style="{StaticResource menuButtonIcon}" />
+                            <fa:IconImage Icon="Plus"  Style="{StaticResource menuButtonIcon}" />
+                            <TextBlock Text="New Client" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
-                    -->
+
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Plus"  Style="{StaticResource menuButtonIcon}" />
+                            <TextBlock Text="New Membership" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="DoorOpen"  Style="{StaticResource menuButtonIcon}" />
+                            <TextBlock Text="Entry With Card" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}" >
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="AddressCard"  Style="{StaticResource menuButtonIcon}" />
+                            <TextBlock Text="Client Cards" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="ChartSimple"  Style="{StaticResource menuButtonIcon}" />
+                            <TextBlock Text="Tracking" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Envelope"  Style="{StaticResource menuButtonIcon}" />
+                            <TextBlock Text="Email" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
                 </StackPanel>
 
             </Border>
@@ -68,99 +104,137 @@
             <Border CornerRadius="0,10,10,0"
                     Grid.Column="1">
 
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <!--Control bar-->
+                        <RowDefinition Height="40"/>
+                        
+                        <!--Header-->
+                        <RowDefinition Height="35"/>
+                        
+                        <!--Content-->
+                        <RowDefinition Height="*"/>
+                        
+                    </Grid.RowDefinitions>
+
+                    <StackPanel x:Name="pnlControlBar"
+                                Grid.Row="0"
+                                Orientation="Horizontal"
+                                FlowDirection="RightToLeft" 
+                                Background="Transparent"
+                                Margin="0,0,5,0">
 
 
-            </Border>
-
-        </Grid>
-        
-        <!--
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="40"/>
-            </Grid.ColumnDefinitions>
-
-            <TextBlock Text="logged in admin window"
-                           Foreground="Black"
-                           FontSize="14"
-                           FontFamily="Ariel"
-                           Grid.Column="0"
-                           VerticalAlignment="Center"
-                           Margin="10,0,0,0"
-                           />
-
-            <Button x:Name="btnMinimize"
-                        BorderThickness="0"
-                        Content="-"
-                        Foreground="black"
-                        FontSize="20"
-                        FontFamily="Ariel"
-                        Cursor="Hand"
-                        Grid.Column="1"
-                        Click="btnMinimize_Click">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="White" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="LightGreen"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="40" Height="30"
-                                    CornerRadius="15"
-                                    Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
-            <Button x:Name="btnClose"
+                        <Button x:Name="btnClose"
                         BorderThickness="0"
                         Content="x"
                         Foreground="black"
-                        FontSize="20"
+                        FontSize="24"
                         FontFamily="Ariel"
                         Cursor="Hand"
-                        Grid.Column="2"
                         Click="btnClose_Click"
                         >
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="White" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="LightGreen"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="White" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="LightGreen"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
 
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="40" Height="30"
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="60" Height="30"
                                     CornerRadius="15"
                                     Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
+                                        <ContentPresenter VerticalAlignment="Center"
                                                   HorizontalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+
+                        <Button x:Name="btnMinimize"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="black"
+                        FontSize="24"
+                        FontFamily="Ariel"
+                        Cursor="Hand"
+                        Click="btnMinimize_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="White" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="LightGreen"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="60" Height="30"
+                                    CornerRadius="15"
+                                    Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                    </StackPanel>
+
+                    <!--Header-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+
+                            <fa:IconImage Icon="Plus"
+                                          Height="20"
+                                          Width="20"
+                                          Margin="35,0,10,0"/>
+                            <TextBlock Text="New Client" FontSize="18"
+                                       FontFamily="Medium" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        
+                        <!--User email address-->
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    FlowDirection="RightToLeft"
+                                    Margin="0,0,20,0">
+                            <TextBlock  Grid.Column="1" Text="UserAddress" 
+                                   Foreground="Gray" FontSize="22" >
+
+                            </TextBlock>
+                        </StackPanel>
+
+                    </Grid>
+
+                    <!--Content section-->
+                    <ContentControl Content="" Grid.Row="2"
+                                        Margin="25"/>
+
+                </Grid>
+               
+            </Border>
+            
+
         </Grid>
-        -->
+        
     </Border>
 </Window>
