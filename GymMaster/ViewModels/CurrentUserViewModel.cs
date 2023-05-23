@@ -5,7 +5,7 @@ namespace GymMaster.ViewModels;
 public class CurrentUserViewModel
 {
     
-    private static CurrentUserViewModel instance;
+    private static CurrentUserViewModel? instance;
     
     public static CurrentUserViewModel Instance
     {

@@ -7,8 +7,8 @@ namespace GymMaster.ViewModels;
 public class LoginViewModel
 {
     
-    private static LoginViewModel instance;
-    
+    private static LoginViewModel? instance;
+    private CurrentUserViewModel CurrentUserVM;
     public static LoginViewModel Instance
     {
         get
@@ -20,8 +20,12 @@ public class LoginViewModel
             return instance;
         }
     }
+
+    private LoginViewModel()
+    {
+        CurrentUserVM = CurrentUserViewModel.Instance;
+    }
     
-    private CurrentUserViewModel CurrentUserVM = new();
     public void Login(UserType userType,string email, string password)
     {
         if (userType == UserType.ADMIN)

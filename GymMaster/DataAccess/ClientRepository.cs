@@ -12,9 +12,15 @@ public class ClientRepository
     public ClientRepository()
     {
         _connectionString = Constants.ConnectionString;
+        ClientsList();
     }
 
-    public List<Client> GetAllClients()
+    public List<Client> GetClientsList()
+    {
+        return ClientsList();
+    }
+
+    private List<Client> ClientsList()
     {
         var clients = new List<Client>();
         using (var connection = new SqlConnection(_connectionString))

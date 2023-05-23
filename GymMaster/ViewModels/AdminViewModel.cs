@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using GymMaster.DataAccess;
 using GymMaster.Models;
 
@@ -6,8 +9,7 @@ namespace GymMaster.ViewModels
 {
     public class AdminViewModel
     {
-        
-        private static AdminViewModel instance;
+        private static AdminViewModel? instance;
     
         public static AdminViewModel Instance
         {
@@ -20,17 +22,30 @@ namespace GymMaster.ViewModels
                 return instance;
             }
         }
+        
         private static AdminRepository _adminRepository = new();
-        private List<Admin> _adminList;
 
         private AdminViewModel()
         {
-            _adminList = _adminRepository.GetAllAdmins();
+            _adminRepository.GetAdminsList();
         }
     
         public List<Admin> GetAdminsList()
         {
-            return _adminList;
+            return _adminRepository.GetAdminsList();
+        }
+        
+        public Admin? GetAdminByEmail(string email)
+        {
+            try
+            {
+                return GetAdminsList().First(a => a.Email.Equals(email));
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No admin with such email!");
+            }
+            return null;
         }
 
     }

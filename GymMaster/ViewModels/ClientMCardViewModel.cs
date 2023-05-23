@@ -5,9 +5,22 @@ namespace GymMaster.ViewModels;
 
 public class ClientMCardViewModel
 {
+    private static ClientMCardViewModel? instance = null;
     private ClientViewModel? clientVM;
 
-    public ClientMCardViewModel()
+    public static ClientMCardViewModel Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new ClientMCardViewModel();
+            }
+            return instance;
+        }
+    }
+    
+    private ClientMCardViewModel()
     {
         clientVM = ClientViewModel.Instance;
     }
@@ -18,6 +31,7 @@ public class ClientMCardViewModel
         if ( client is { IsDeleted: false })
         {
             //TODO Continue
+            
         }
     }
 }

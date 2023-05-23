@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using GymMaster.DataAccess;
 using GymMaster.Models;
@@ -9,7 +11,7 @@ namespace GymMaster.ViewModels
     {
         private static ClientViewModel? instance;
     
-        public static ClientViewModel? Instance
+        public static ClientViewModel Instance
         {
             get
             {
@@ -22,47 +24,33 @@ namespace GymMaster.ViewModels
         }
         
         private static ClientRepository _clientRepository = new();
-        private List<Client> _clientList;
-        
+
         private ClientViewModel()
         {
-            _clientList = _clientRepository.GetAllClients();
         }
 
         public List<Client> GetClientsList()
         {
-            return _clientList;
+            return _clientRepository.GetClientsList();
         }
 
         public List<string> GetClientNames()
         {
-            var clientNames = new List<string>();
-
-            foreach (var client in _clientList)
-            {
-                clientNames.Add(client.Name);
-            }
-
-            return clientNames;
+            return GetClientsList().Select(c => c.Name).ToList();
         }
 
         public Client? GetClientByBarcode(string barcode)
         {
-            Client? clientToReturn = null;
-            foreach (var client in _clientList)
+            try
             {
-                if (client.Barcode == barcode)
-                {
-                    clientToReturn = client;
-                }
+                return GetClientsList().First(c => c.Barcode.Equals(barcode));
             }
-            if (clientToReturn == null)
+            catch (Exception e)
             {
                 MessageBox.Show("No client found with given code!");
             }
-            return clientToReturn;
+            return null;
         }
-        
     }
 }
 

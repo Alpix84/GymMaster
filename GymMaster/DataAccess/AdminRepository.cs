@@ -4,6 +4,7 @@ using GymMaster.Models;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows;
 
 namespace GymMaster.DataAccess;
 
@@ -14,14 +15,19 @@ public class AdminRepository
     public AdminRepository()
     {
         _connectionString = Constants.ConnectionString;
+        AdminsList();
+    }
+
+    public List<Admin> GetAdminsList()
+    {
+        return AdminsList();
     }
 
     public void AddAdmin(string name,string phoneNumber,string email,string password)
     {
-        
         if (AdminExists(email))
         {
-            Console.WriteLine("An admin with this email already exists.");
+            MessageBox.Show("An admin with this email already exists!");
             return;
         }
         
@@ -49,7 +55,7 @@ public class AdminRepository
         }
     }
 
-    public List<Admin> GetAllAdmins()
+    private List<Admin> AdminsList()
     {
         var admins = new List<Admin>();
 
@@ -93,7 +99,7 @@ public class AdminRepository
         }
     }
     
-    public bool AdminExists(string email)
+    private bool AdminExists(string email)
     {
         using (var connection = new SqlConnection(_connectionString))
         {
