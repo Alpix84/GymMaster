@@ -5,19 +5,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:GymMaster.Views.LoggedInClient"
         mc:Ignorable="d"
-        Title="LoggedInClientWindow" Height="450" Width="800"
+        Title="LoggedInClientWindow" Height="1920" Width="1080"
         WindowState="Maximized"
         WindowStyle="None">
 
-
-    <!--
-    <Border CornerRadius="50">
-        <Border.Background>
-            <ImageBrush ImageSource="/Images/background1.jpg" />
-        </Border.Background>
-    -->
-    <Border CornerRadius="15"
-            BorderThickness="5">
+    <Border CornerRadius="5"
+            BorderThickness="1">
 
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
@@ -34,23 +27,151 @@
         </Border.Background>
 
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+            <Grid.RowDefinitions>
+                <!--Control bar-->
+                <RowDefinition Height="40"/>
+
+                <!--Content-->
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="pnlControlBar"
+                                Grid.Row="0"
+                                Orientation="Horizontal"
+                                FlowDirection="RightToLeft" 
+                                Background="Transparent"
+                                Margin="0,0,5,0">
 
 
-                <ColumnDefinition Width="*"/>
+                <Button x:Name="btnClose"
+                        BorderThickness="0"
+                        Content="x"
+                        Foreground="black"
+                        FontSize="24"
+                        FontFamily="Ariel"
+                        Cursor="Hand"
+                        Click="btnClose_Click"
+                        >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="White" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGreen"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
 
-            </Grid.ColumnDefinitions>
-            
-            <!--Navigation Menu-->
-            <Border CornerRadius="0,0,0,10"
-                    Grid.Column="0"
-                    Background="#ccff99">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="60" Height="30"
+                                    CornerRadius="15"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
+
+                <Button x:Name="btnMinimize"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="black"
+                        FontSize="24"
+                        FontFamily="Ariel"
+                        Cursor="Hand"
+                        Click="btnMinimize_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="White" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGreen"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="60" Height="30"
+                                    CornerRadius="15"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+            </StackPanel>
+
+            <Grid Grid.Row="1">
+                <DataGrid
+                x:Name="DataGrid"
+                IsReadOnly="True"
+                AutoGenerateColumns="False"
                 
+                Margin="20,80,20,20"
+                >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                        Header="Name"
+                        MinWidth="90"
+                        Width="*"
+                            />
 
 
-            </Border>
+                        <DataGridTextColumn
+                        Header="Price"
+                        MinWidth="90"
+                        Width="*"
+                            />
+
+                        <DataGridTextColumn
+                        Header="Valid Days"
+                        MinWidth="90"
+                        Width="*"
+                            />
+
+                        <DataGridTextColumn
+                        Header="Valid Entries"
+                        MinWidth="90"
+                        Width="*"
+                            />
+
+                        <DataGridTextColumn
+                        Header="GYM"
+                        MinWidth="90"
+                        Width="*"
+                            />
+
+                        <DataGridTextColumn
+                        Header="Start Hour"
+                        MinWidth="90"
+                        Width="*"
+                            />
+
+                        <DataGridTextColumn
+                        Header="End Hour"
+                        MinWidth="90"
+                        Width="*"
+                            />
+
+                        <DataGridTextColumn
+                        Header="Daily Entries"
+                        MinWidth="90"
+                        Width="*"
+                            />
+                    </DataGrid.Columns>
+
+
+                </DataGrid>
+            </Grid>
         </Grid>   
     </Border>
 </Window>
