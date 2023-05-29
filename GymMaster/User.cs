@@ -1,6 +1,6 @@
 namespace GymMaster;
 
-public interface User
+public interface IUser
 {
     
 }

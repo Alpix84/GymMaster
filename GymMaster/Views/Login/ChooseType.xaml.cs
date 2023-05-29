@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GymMaster.Models;
 
 namespace GymMaster.Views.Login
 {
@@ -43,12 +44,18 @@ namespace GymMaster.Views.Login
 
         private void btnUser_Click(object sender, RoutedEventArgs e)
         {
-
+            View.Login login = new View.Login();
+            login.Show();
+            CurrentUser.UserType = UserType.CLIENT;
+            this.Close();
         }
 
         private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
-
+            View.Login login = new View.Login();
+            login.Show();
+            CurrentUser.UserType = UserType.ADMIN;
+            this.Close();
         }
     }
 }

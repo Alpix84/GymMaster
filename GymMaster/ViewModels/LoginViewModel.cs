@@ -26,8 +26,9 @@ public class LoginViewModel
         CurrentUserVM = CurrentUserViewModel.Instance;
     }
     
-    public void Login(UserType userType,string email, string password)
+    public bool Login(string email, string password)
     {
+        UserType? userType = CurrentUser.UserType;
         if (userType == UserType.ADMIN)
         {
             List<Admin> admins = AdminViewModel.Instance.GetAdminsList();
@@ -35,8 +36,8 @@ public class LoginViewModel
             {
                 if (admin.Email.Equals(email) && admin.Password.Equals(password))
                 {
-                    CurrentUserVM.SetCurrentUser(admin,userType);
-                    //TODO Navigate to other page
+                    CurrentUserVM.SetCurrentUser(admin);
+                    return true;
                 }
             }
         }
@@ -47,15 +48,18 @@ public class LoginViewModel
             {
                 if (client.Email.Equals(email) && client.Password.Equals(password))
                 {
-                    CurrentUserVM.SetCurrentUser(client, userType);
-                    //TODO Navigate to other page
+                    CurrentUserVM.SetCurrentUser(client);
+                    return true;
                 }
             }
         }
         else
         {
             MessageBox.Show("Incorrect login credentials!");
+            return false;
         }
+
+        return false;
     }
 
     public void LogOut()

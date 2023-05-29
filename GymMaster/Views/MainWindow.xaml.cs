@@ -11,6 +11,7 @@ namespace GymMaster.Views
     {
         private AdminViewModel _adminVM = AdminViewModel.Instance;
         private ClientViewModel _clientVM = ClientViewModel.Instance;
+        private ClientMCardViewModel _clientMCardVM = ClientMCardViewModel.Instance;
         public MainWindow()
         {
             InitializeComponent();
@@ -18,14 +19,12 @@ namespace GymMaster.Views
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var admin = _adminVM.GetAdminByEmail("emb1er@gmail.com");
-            AdminListTextBlock.Text = admin != null ? string.Join(Environment.NewLine, $"ID: {admin.Id}, Name: {admin.Name}, Email: {admin.Email}, Phone Number: {admin.PhoneNumber}") : "";
+            _adminVM.AddNewAdmin("Reszeg Alpar","123-456-7890","alpar@gmail.com","jelszo123");
         }
         
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var client = _clientVM.GetClientNames();
-            AdminListTextBlock.Text = string.Join(Environment.NewLine, client);
+            _clientMCardVM.AddCardToClient("ABC123",2,60,new DateTime(2023,7,1), 1);
         }
     }
 }

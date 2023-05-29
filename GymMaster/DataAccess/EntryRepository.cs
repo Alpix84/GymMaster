@@ -9,17 +9,29 @@ namespace GymMaster.DataAccess;
 public class EntryRepository
 {
     private readonly string _connectionString;
-    private List<Entry> entriesList;
 
     public EntryRepository()
     {
         _connectionString = Constants.ConnectionString;
-        entriesList = EntriesList();
+        EntriesList();
     }
 
     public List<Entry> GetEntriesList()
     {
-        return entriesList=EntriesList();
+        return EntriesList();
+    }
+
+    public void AddNewEntry(int clientId,int membershipCardId,int adminId,string barcode,int gymId)
+    {
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            var query = $"INSERT INTO entries(client_id, membership_id, entryDate,insertedBy_id, barcode, gym_id) VALUES ({clientId}, {membershipCardId}, '{DateTime.Today:yyyy-MM-dd}', {adminId},{barcode},{gymId})";
+            var command = new SqlCommand(query, connection);
+            
+            command.ExecuteNonQuery();
+        }
     }
 
     private List<Entry> EntriesList()

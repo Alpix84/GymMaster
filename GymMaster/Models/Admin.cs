@@ -1,6 +1,6 @@
 namespace GymMaster.Models;
 
-public class Admin : User
+public class Admin : IUser
 {
     public int Id { get; private set; }
     public string Name { get; private set; }

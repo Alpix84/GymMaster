@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 using GymMaster.Models;
@@ -14,26 +16,25 @@ public class MembershipCardRepository
     public MembershipCardRepository()
     {
         _connectionString = Constants.ConnectionString;
-        membershipCardsList = AllMembershipCards();
     }
 
     public List<MembershipCard> GetAllMembershipCards()
     {
-        return membershipCardsList = AllMembershipCards();
+        return  AllMembershipCards();
     }
 
-    public MembershipCard? GetMembershipCardById(int id)
+    public MembershipCard GetMembershipCardById(int id)
     {
-        foreach (var membershipCard in membershipCardsList)
+        try
         {
-            if (membershipCard.Id == id)
-            {
-                return membershipCard;
-            }
+            return AllMembershipCards().First(c => c.Id == id);
         }
-        MessageBox.Show("No membership card found!");
-        return null;
+        catch (InvalidOperationException)
+        {
+            throw new Exception("No membership card found with the given ID!");
+        }
     }
+
 
     private List<MembershipCard> AllMembershipCards()
     {
@@ -43,7 +44,7 @@ public class MembershipCardRepository
         {
             connection.Open();
 
-            var query = "SELECT * FROM membershipCard WHERE isDeleted = 0";
+            var query = "SELECT * FROM membershipCard";
             var command = new SqlCommand(query, connection);
 
             using (var reader = command.ExecuteReader())
