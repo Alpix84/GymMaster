@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="GymMaster.Views.LoggedInAdmin.ClientsTrackingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GymMaster.Views.LoggedInAdmin"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <TextBlock Text="List of customers:"
+                       FontSize="28"
+                       FontWeight="Medium"
+                       TextAlignment="Center"
+                       FontFamily="Ariel"
+                       Margin="0,40,0,40"
+                       >
+
+        </TextBlock>
+
+        <DataGrid
+                x:Name="DataGrid"
+                IsReadOnly="True"
+                AutoGenerateColumns="False"
+                
+                Margin="20,80,20,20"
+                >
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                        Header="Name"
+                        MinWidth="90"
+                        Binding="{Binding name}"
+                        Width="*"
+                            />
+
+
+                <DataGridTextColumn
+                        Header="PhoneNumber"
+                        MinWidth="90"
+                        Binding="{Binding phoneNumber}"
+                        Width="*"
+                            />
+
+                <DataGridTextColumn
+                        Header="Email"
+                        MinWidth="90"
+                        Binding="{Binding email}"    
+                        Width="*"
+                            />
+
+                <DataGridTextColumn
+                        Header="Registration Date"
+                        MinWidth="90"
+                        Binding="{Binding registrationDate}"
+                        Width="*"
+                            />
+
+                <DataGridTextColumn
+                        Header="Address"
+                        MinWidth="90"
+                        Binding="{Binding address}"
+                        Width="*"
+                        />
+
+                <DataGridTextColumn
+                        Header="Barcode"
+                        MinWidth="90"
+                        Binding="{Binding barcode}"
+                        Width="*"
+                            />
+
+                <DataGridTextColumn
+                        Header="Notes"
+                        MinWidth="90"
+                        Binding="{Binding notes}"
+                        Width="*"
+                            />
+
+            </DataGrid.Columns>
+
+
+        </DataGrid>
+
+    </Grid>
+</UserControl>

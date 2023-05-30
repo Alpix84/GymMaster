@@ -38,8 +38,8 @@ public class GymRepository
                 {
                     var id = (int)reader["gym_id"];
                     var name = reader["name"].ToString();
-                    var isDeleted = (bool)reader["isDeleted"];
 
+                    bool isDeleted = Convert.IsDBNull(reader["isDeleted"]) ? false : (bool)reader["isDeleted"];
                     var gym = new Gym(id, name, isDeleted);
                     gyms.Add(gym);
                 }
