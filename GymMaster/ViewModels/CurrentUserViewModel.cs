@@ -19,21 +19,19 @@ public class CurrentUserViewModel
         }
     }
     
-    public void SetCurrentUser(User user, UserType userType)
+    public void SetCurrentUser(IUser user)
     {
-        switch (userType)
+        switch (CurrentUser.UserType)
         {
             case UserType.ADMIN:
                 CurrentUser.Id = ((Admin)user).Id;
                 CurrentUser.Name = ((Admin)user).Name;
                 CurrentUser.Email = ((Admin)user).Email;
-                CurrentUser.UserType = UserType.ADMIN;
                 break;
             case UserType.CLIENT:
                 CurrentUser.Id = ((Client)user).Id;
                 CurrentUser.Name = ((Client)user).Name;
                 CurrentUser.Email = ((Client)user).Email;
-                CurrentUser.UserType = UserType.CLIENT;
                 break;
         }
     }

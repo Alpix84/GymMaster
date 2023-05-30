@@ -29,6 +29,11 @@ namespace GymMaster.ViewModels
         {
             _adminRepository.GetAdminsList();
         }
+
+        public void AddNewAdmin(string name,string phoneNumber,string email,string password)
+        {
+            _adminRepository.AddAdmin(name,phoneNumber,email,password);
+        }
     
         public List<Admin> GetAdminsList()
         {

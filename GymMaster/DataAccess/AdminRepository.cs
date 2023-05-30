@@ -43,14 +43,9 @@ public class AdminRepository
         {
             connection.Open();
 
-            var query = "INSERT INTO admins (name, phoneNumber,email,password) VALUES (@Name, @PhoneNumber, @Email,@Password)";
-
+            var query = $"INSERT INTO admins (name, phoneNumber,email,password) VALUES ('{name}', '{phoneNumber}', '{email}','{hashString}')";
             var command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@Name", name);
-            command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-            command.Parameters.AddWithValue("@Email", email);
-            command.Parameters.AddWithValue("@Password", hashString);
-
+            
             command.ExecuteNonQuery();
         }
     }

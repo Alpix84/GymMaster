@@ -1,4 +1,7 @@
 using System;
+using System.Text;
+using System.Windows;
+using GymMaster.DataAccess;
 using GymMaster.Models;
 
 namespace GymMaster.ViewModels;
@@ -7,6 +10,8 @@ public class ClientMCardViewModel
 {
     private static ClientMCardViewModel? instance = null;
     private ClientViewModel? clientVM;
+    private ClientMCardRepository _clientMCardRepository = new();
+    private MembershipCardRepository _membershipCardRepository = new();
 
     public static ClientMCardViewModel Instance
     {
@@ -25,13 +30,34 @@ public class ClientMCardViewModel
         clientVM = ClientViewModel.Instance;
     }
 
-    public void AddCardToClient(string clientBarcode,int membershipCardID,float priceSold,DateTime validUntil)
+    public void AddCardToClient(string clientBarcode,int membershipCardID,float priceSold,DateTime validUntil,int gymId)
     {
         Client client = clientVM.GetClientByBarcode(clientBarcode);
         if ( client is { IsDeleted: false })
         {
-            //TODO Continue
-            
+            if (priceSold > 0)
+            {
+                if (validUntil > DateTime.Today.Date)
+                {
+                    _clientMCardRepository.AddCardToClient(client.Id,membershipCardID,priceSold,validUntil,Constants.GenerateBarcode(),gymId);
+                }
+                else
+                {
+                    MessageBox.Show("Error inserting client!");
+                    Console.WriteLine("DATE ERROR");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error inserting client!");
+                Console.WriteLine("LOW PRICE");
+            }
+        }
+        else
+        {
+            MessageBox.Show("Client is deleted!");
+            Console.WriteLine("DELETED CLIENT");
         }
     }
+    
 }

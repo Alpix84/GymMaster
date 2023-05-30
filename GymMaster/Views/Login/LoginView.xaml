@@ -209,7 +209,7 @@
                         Cursor="Hand"
                         Grid.Column="2"
                         Margin="0,35,0,0"
-                        Click="btnClose_Click"
+                        Click="BtnLogin_Click"
                         >
                         <Button.Style>
                         <Style TargetType="Button">

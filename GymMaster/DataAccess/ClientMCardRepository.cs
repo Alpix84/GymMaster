@@ -10,17 +10,15 @@ namespace GymMaster.DataAccess;
 public class ClientMCardRepository
 {
     private readonly string _connectionString;
-    private List<ClientMCards> clientMCardList;
 
     public ClientMCardRepository()
     {
         _connectionString = Constants.ConnectionString;
-        clientMCardList = ClientMCardsList();
     }
 
     public List<ClientMCards> GetClientMCardsList()
     {
-        return clientMCardList = ClientMCardsList();
+        return ClientMCardsList();
     }
 
     private List<ClientMCards> ClientMCardsList()
@@ -57,10 +55,16 @@ public class ClientMCardRepository
         return clientMCards;
     }
     
-
-    public void AddCardToClient(Client client,int membershipCardID,float priceSold,DateTime validUntil)
+    public void AddCardToClient(int clientId,int membershipCardID,float priceSold,DateTime validUntil,string barcode,int gymId)
     {
-        
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            var query = $"INSERT INTO clientMCards(client_id, membership_id, boughtOnDate, barcode, currentEntries, priceSold, validUntil, firstEntry, gym_id) VALUES ({clientId}, {membershipCardID}, '{DateTime.Today.ToString("yyyy-MM-dd")}', '{barcode}', 0, {priceSold}, '{validUntil.ToString("yyyy-MM-dd")}', NULL, {gymId})";
+            var command = new SqlCommand(query, connection);
+            command.ExecuteNonQuery();
+        }
     }
     
 }

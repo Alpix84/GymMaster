@@ -20,6 +20,19 @@ public class ClientRepository
         return ClientsList();
     }
 
+    public void AddNewClient(string name,string phonenumber,string email,string address,string barcode,string notes,string password)
+    {
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+            
+            var query = $"INSERT INTO clients(name, phoneNumber, email, isDeleted, photo, registrationDate, address, barcode,note,password) VALUES ({name}, {phonenumber}, {email},NULL,NULL,'{DateTime.Today.ToString("yyyy-MM-dd")}', '{address}', {barcode},, {notes},{password})";
+            var command = new SqlCommand(query, connection);
+            
+            command.ExecuteNonQuery();
+        }
+    }
+
     private List<Client> ClientsList()
     {
         var clients = new List<Client>();
@@ -53,5 +66,4 @@ public class ClientRepository
         }
         return clients;
     }
-
 }
