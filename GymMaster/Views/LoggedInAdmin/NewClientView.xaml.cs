@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GymMaster.ViewModels;
 
 namespace GymMaster.Views.LoggedInAdmin
 {
@@ -24,10 +25,18 @@ namespace GymMaster.Views.LoggedInAdmin
         {
             InitializeComponent();
         }
+        
+        private ClientViewModel _clientVM = ClientViewModel.Instance;
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            var name = txtName.Text;
+            var phoneNumber = txtPhone.Text;
+            var email = txtEmail.Text;
+            var address = txtAddress.Text;
+            var notes = txtNotes.Text;
+            var password = txtPassword.Text;
+            _clientVM.AddNewClient(name,phoneNumber,email,address,notes,password);
         }
     }
 }

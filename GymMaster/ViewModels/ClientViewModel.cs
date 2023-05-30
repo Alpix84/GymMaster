@@ -43,9 +43,13 @@ namespace GymMaster.ViewModels
                 passwordHash = Convert.ToBase64String(hash);
             }
 
-            if (!ClientExists(email))
+            if (ClientExists(email) == false)
             {
                 _clientRepository.AddNewClient(name,phonenumber,email,address,Constants.GenerateBarcode(),notes,passwordHash);
+            }
+            else
+            {
+                MessageBox.Show("Client with given email already exists!");
             }
         }
 
@@ -53,9 +57,12 @@ namespace GymMaster.ViewModels
         {
             if (GetClientByEmail(email)==null)
             {
+                return false;
+            }
+            else
+            {
                 return true;
             }
-            return false;
         }
 
         public List<Client> GetClientsList()
@@ -85,14 +92,14 @@ namespace GymMaster.ViewModels
         {
             try
             {
-                return GetClientsList().First(c => c.Email.Equals(email));
+                return GetClientsList().FirstOrDefault(c => c.Email.Equals(email));
             }
             catch (Exception e)
             {
-                MessageBox.Show("Client with this email already exists!");
+                return null;
             }
-            return null;
         }
+
         
     }
 }

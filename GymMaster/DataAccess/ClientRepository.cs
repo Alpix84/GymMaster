@@ -26,7 +26,7 @@ public class ClientRepository
         {
             connection.Open();
             
-            var query = $"INSERT INTO clients(name, phoneNumber, email, isDeleted, photo, registrationDate, address, barcode,note,password) VALUES ({name}, {phonenumber}, {email},NULL,NULL,'{DateTime.Today.ToString("yyyy-MM-dd")}', '{address}', {barcode},, {notes},{password})";
+            var query = $"INSERT INTO clients(name, phoneNumber, email, isDeleted, photo, registrationDate, address, barcode, note, password) VALUES ('{name}', '{phonenumber}', '{email}', NULL, NULL, '{DateTime.Today.ToString("yyyy-MM-dd")}', '{address}', '{barcode}', '{notes}', '{password}')";
             var command = new SqlCommand(query, connection);
             
             command.ExecuteNonQuery();
@@ -54,7 +54,7 @@ public class ClientRepository
                     var name = reader["name"].ToString();
                     var phoneNumber = reader["phoneNumber"].ToString();
                     var email = reader["email"].ToString();
-                    var isDeleted = (bool)reader["isDeleted"];
+                    bool isDeleted = Convert.IsDBNull(reader["isDeleted"]) ? false : (bool)reader["isDeleted"];
                     var photo = reader.IsDBNull(reader.GetOrdinal("photo")) ? null : (byte[])reader["photo"];
                     var registrationDate = reader.IsDBNull(reader.GetOrdinal("registrationDate")) ? null : (DateTime?)reader["registrationDate"];
                     var address = reader["address"].ToString();

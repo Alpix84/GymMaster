@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GymMaster.ViewModels.UI;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace GymMaster.Views.LoggedInAdmin
 {
@@ -38,9 +39,15 @@ namespace GymMaster.Views.LoggedInAdmin
             var startHour = int.Parse(txtStartHour.Text);
             var endHour = int.Parse(txtEndHour.Text);
             var dailyEntries = int.Parse(txtDailyEntriesNum.Text);
-            
-            _newMembershipVM.CreateMembershipCard(name,price,validDays,validEntries,gymId,startHour,endHour,dailyEntries);
-            
+
+            if (name.Length < 4)
+            {
+                MessageBox.Show("Too short name for Membership card!");
+            }
+            else
+            {
+                _newMembershipVM.CreateMembershipCard(name,price,validDays,validEntries,gymId,startHour,endHour,dailyEntries);
+            }
         }
     }
 }

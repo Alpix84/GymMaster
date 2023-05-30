@@ -20,12 +20,11 @@ namespace GymMaster.Views
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _entryVM.AddNewEntry("ABC123",6,"alpar@gmail.com");
+            AdminListTextBlock.Text = $"Client = {_clientVM.GetClientByEmail("horthy@gmail.com").Email}";
         }
         
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            _clientMCardVM.AddCardToClient("ABC123",6,120,new DateTime(2023,7,1),1);
         }
     }
 }
