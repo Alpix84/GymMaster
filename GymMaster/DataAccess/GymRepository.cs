@@ -8,17 +8,15 @@ namespace GymMaster.DataAccess;
 public class GymRepository
 {
     private readonly string _connectionString;
-    private List<Gym> gymsList;
 
     public GymRepository()
     {
         _connectionString = Constants.ConnectionString;
-        gymsList = GymsList();
     }
 
     public List<Gym> GetGymsList()
     {
-        return gymsList = GymsList();
+        return GymsList();
     }
 
     private List<Gym> GymsList()

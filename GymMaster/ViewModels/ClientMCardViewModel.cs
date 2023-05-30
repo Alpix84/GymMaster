@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using GymMaster.DataAccess;
@@ -8,7 +9,7 @@ namespace GymMaster.ViewModels;
 
 public class ClientMCardViewModel
 {
-    private static ClientMCardViewModel? instance = null;
+    private static ClientMCardViewModel? instance;
     private ClientViewModel? clientVM;
     private ClientMCardRepository _clientMCardRepository = new();
     private MembershipCardRepository _membershipCardRepository = new();
@@ -29,6 +30,12 @@ public class ClientMCardViewModel
     {
         clientVM = ClientViewModel.Instance;
     }
+    
+    public void IncrementEntriesNum(int id)
+    {
+            _clientMCardRepository.IncrementEntriesNum(id);
+    }
+
 
     public void AddCardToClient(string clientBarcode,int membershipCardID,float priceSold,DateTime validUntil,int gymId)
     {
@@ -59,5 +66,9 @@ public class ClientMCardViewModel
             Console.WriteLine("DELETED CLIENT");
         }
     }
-    
+
+    public List<ClientMCards> GetAllCards()
+    {
+        return _clientMCardRepository.GetClientMCardsList();
+    }
 }

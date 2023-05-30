@@ -42,7 +42,7 @@ public class ClientMCardRepository
                     var boughtOnDate = reader.IsDBNull(reader.GetOrdinal("boughtOnDate")) ? null : (DateTime?)reader["boughtOnDate"];
                     var barcode = reader["barcode"].ToString();
                     var currentEntries = (int)reader["currentEntries"];
-                    var priceSold = (float)reader["priceSold"];
+                    var priceSold = (double)reader["priceSold"];
                     var validUntil = reader.IsDBNull(reader.GetOrdinal("validUntil")) ? null : (DateTime?)reader["validUntil"];
                     var firstEntry = reader.IsDBNull(reader.GetOrdinal("firstEntry")) ? null : (DateTime?)reader["firstEntry"];
                     var gymId = (int)reader["gym_id"];
@@ -53,6 +53,18 @@ public class ClientMCardRepository
             }
         }
         return clientMCards;
+    }
+
+    public void IncrementEntriesNum(int id)
+    {
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            var query = $"UPDATE clientMCards SET currentEntries = currentEntries + 1  WHERE clientMCard_id={id}";
+            var command = new SqlCommand(query, connection);
+            command.ExecuteNonQuery();
+        }
     }
     
     public void AddCardToClient(int clientId,int membershipCardID,float priceSold,DateTime validUntil,string barcode,int gymId)

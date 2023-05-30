@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using GymMaster.Models;
 using GymMaster.ViewModels;
 
 namespace GymMaster.Views
@@ -12,6 +13,7 @@ namespace GymMaster.Views
         private AdminViewModel _adminVM = AdminViewModel.Instance;
         private ClientViewModel _clientVM = ClientViewModel.Instance;
         private ClientMCardViewModel _clientMCardVM = ClientMCardViewModel.Instance;
+        private EntryViewModel _entryVM = EntryViewModel.Instance;
         public MainWindow()
         {
             InitializeComponent();
@@ -19,12 +21,12 @@ namespace GymMaster.Views
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _adminVM.AddNewAdmin("Reszeg Alpar","123-456-7890","alpar@gmail.com","jelszo123");
+            _entryVM.AddNewEntry("ABC123",6,"alpar@gmail.com",1);
         }
         
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            _clientMCardVM.AddCardToClient("ABC123",2,60,new DateTime(2023,7,1), 1);
+            _clientMCardVM.AddCardToClient("ABC123",6,120,new DateTime(2023,7,1),1);
         }
     }
 }
