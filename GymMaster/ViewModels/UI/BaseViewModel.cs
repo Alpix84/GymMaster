@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GymMaster.ViewModels
+namespace GymMaster.ViewModels.UI
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {

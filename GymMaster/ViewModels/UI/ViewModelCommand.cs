@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace GymMaster.ViewModels
+namespace GymMaster.ViewModels.UI
 {
     public class ViewModelCommand : ICommand
     {
