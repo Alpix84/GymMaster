@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GymMaster.ViewModels.UI;
 
 namespace GymMaster.Views.LoggedInAdmin
 {
@@ -25,9 +26,21 @@ namespace GymMaster.Views.LoggedInAdmin
             InitializeComponent();
         }
 
+        private NewMembershipViewModel _newMembershipVM = new();
+
         private void btnMakeMembership_Click(object sender, RoutedEventArgs e)
         {
-
+            var name = txtName.Text;
+            var price = double.Parse(txtPrice.Text);
+            var validDays = int.Parse(txtValidDaysNum.Text);
+            var validEntries = int.Parse(txtValidEntriesNum.Text);
+            var gymId = int.Parse(txtGymId.Text);
+            var startHour = int.Parse(txtStartHour.Text);
+            var endHour = int.Parse(txtEndHour.Text);
+            var dailyEntries = int.Parse(txtDailyEntriesNum.Text);
+            
+            _newMembershipVM.CreateMembershipCard(name,price,validDays,validEntries,gymId,startHour,endHour,dailyEntries);
+            
         }
     }
 }

@@ -5,13 +5,13 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 using GymMaster.Models;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace GymMaster.DataAccess;
 
 public class MembershipCardRepository
 {
     private readonly string _connectionString;
-    private List<MembershipCard> membershipCardsList;
 
     public MembershipCardRepository()
     {
@@ -68,5 +68,20 @@ public class MembershipCardRepository
             }
         }
         return membershipCards;
+    }
+
+    public void AddNewMembershipCard(string name,double price,int validDays,int validEntries,int gymId,int startH,int endH,int dailyEntries)
+    {
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            var query = $"INSERT INTO membershipCard(name,price,validDaysNum,validEntriesNum,gym_id,startHour,endHour,dailyEntriesNum) VALUES ('{name}',{price},{validDays},{validEntries},{gymId},{startH},{endH},{dailyEntries})";
+            var command = new SqlCommand(query, connection);
+            
+            command.ExecuteNonQuery();
+
+            MessageBox.Show($"Membership card successfully created, with name : {name}");
+        }
     }
 }

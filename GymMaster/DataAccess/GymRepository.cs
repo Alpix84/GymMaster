@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Windows.Documents;
+using System.Linq;
+using System.Windows.Forms;
 using GymMaster.Models;
 
 namespace GymMaster.DataAccess;
@@ -45,4 +47,18 @@ public class GymRepository
         }
         return gyms;
     }
+    public Gym? GetGymById(int id)
+    {
+        try
+        {
+            return GymsList().First(c => c.Id == id);
+        }
+        catch (InvalidOperationException)
+        {
+            MessageBox.Show("No gym found with given ID!");
+        }
+
+        return null;
+    }
+    
 }

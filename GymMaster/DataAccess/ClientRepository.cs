@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using GymMaster.Models;
 
 namespace GymMaster.DataAccess;
@@ -29,6 +30,8 @@ public class ClientRepository
             var command = new SqlCommand(query, connection);
             
             command.ExecuteNonQuery();
+
+            MessageBox.Show($"Client added succesfully, with barcode : {barcode}");
         }
     }
 

@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Windows.Forms;
 using GymMaster.DataAccess;
 using GymMaster.Models;
 
@@ -29,5 +31,16 @@ public class MembershipCardViewModel
     {
         return _membershipCardRepository.GetMembershipCardById(cardId);
     }
-    
+
+    public void NewMembershipCard(string name,double price,int validDays,int validEntries,int gymId,int startH,int endH,int dailyEntries)
+    {
+        if (_membershipCardRepository.GetAllMembershipCards().Any(c=> c.Name == name))
+        {
+            MessageBox.Show("A Membership Card with this name already exists!");
+        }
+        else
+        {
+            _membershipCardRepository.AddNewMembershipCard(name,price,validDays,validEntries,gymId,startH,endH,dailyEntries);
+        }
+    }
 }

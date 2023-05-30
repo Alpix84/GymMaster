@@ -43,6 +43,7 @@ public class AdminRepository
             connection.Open();
 
             var query = $"INSERT INTO admins (name, phoneNumber,email,password) VALUES ('{name}', '{phoneNumber}', '{email}','{hashString}')";
+            
             var command = new SqlCommand(query, connection);
             
             command.ExecuteNonQuery();

@@ -34,7 +34,7 @@ public class EntryViewModel
         _entryRepository.GetEntriesList();
     }
 
-    public void AddNewEntry(string clientBarcode,int membershipId,string inserterEmail,int gymId)
+    public void AddNewEntry(string clientBarcode,int membershipId,string inserterEmail)
     {
         Client? client = _clientVM.GetClientByBarcode(clientBarcode);
         List<ClientMCards> mCardsList = _clientMCardVM.GetAllCards();
@@ -56,7 +56,7 @@ public class EntryViewModel
                                     c.EntryDate == DateTime.Today) < membershipCard.DailyEntriesNum)
                             {
                                 _entryRepository.AddNewEntry(client.Id, membershipId,
-                                    _adminVM.GetAdminByEmail(inserterEmail)!.Id, Constants.GenerateBarcode(), gymId);
+                                    _adminVM.GetAdminByEmail(inserterEmail)!.Id, Constants.GenerateBarcode(), membershipCard.GymId);
                                 _clientMCardVM.IncrementEntriesNum(clientMCard.Id);
                             }
                             else

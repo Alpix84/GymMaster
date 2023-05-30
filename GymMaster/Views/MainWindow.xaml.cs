@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using GymMaster.Models;
 using GymMaster.ViewModels;
 
 namespace GymMaster.Views
@@ -21,7 +20,7 @@ namespace GymMaster.Views
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _entryVM.AddNewEntry("ABC123",6,"alpar@gmail.com",1);
+            _entryVM.AddNewEntry("ABC123",6,"alpar@gmail.com");
         }
         
         private void Button_Click_2(object sender, RoutedEventArgs e)
