@@ -2,5 +2,5 @@ namespace GymMaster;
 
 public class Constants
 {
-    public static readonly string ConnectionString = "Data Source=.;Initial Catalog=GymMaster;Integrated Security=True";
+    public static readonly string ConnectionString = "Data Source=(localdb)\\GymMaster;Initial Catalog=Gym_Master;Integrated Security=True";
 }
