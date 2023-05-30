@@ -53,7 +53,7 @@ public class MembershipCardRepository
                 {
                     var id = (int)reader["membership_id"];
                     var name = reader["name"].ToString();
-                    var price = (float)reader["price"];
+                    var price = (double)reader["price"];
                     var validDaysNum = (int)reader["validDaysNum"];
                     var validEntriesNum = (int)reader["validEntriesNum"];
                     var isDeleted = (bool)reader["isDeleted"];

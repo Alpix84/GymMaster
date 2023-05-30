@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Windows.Documents;
 using GymMaster.Models;
 
 namespace GymMaster.DataAccess;
@@ -13,7 +12,6 @@ public class EntryRepository
     public EntryRepository()
     {
         _connectionString = Constants.ConnectionString;
-        EntriesList();
     }
 
     public List<Entry> GetEntriesList()
@@ -21,13 +19,13 @@ public class EntryRepository
         return EntriesList();
     }
 
-    public void AddNewEntry(int clientId,int membershipCardId,int adminId,string barcode,int gymId)
+    public void AddNewEntry(int clientId,int membershipCardId,int adminId,string newBarcode,int gymId)
     {
         using (var connection = new SqlConnection(_connectionString))
         {
             connection.Open();
 
-            var query = $"INSERT INTO entries(client_id, membership_id, entryDate,insertedBy_id, barcode, gym_id) VALUES ({clientId}, {membershipCardId}, '{DateTime.Today:yyyy-MM-dd}', {adminId},{barcode},{gymId})";
+            var query = $"INSERT INTO entries(client_id, membership_id, entryDate,insertedBy_id, barcode, gym_id) VALUES ({clientId}, {membershipCardId}, '{DateTime.Today:yyyy-MM-dd}', {adminId},'{newBarcode}',{gymId})";
             var command = new SqlCommand(query, connection);
             
             command.ExecuteNonQuery();

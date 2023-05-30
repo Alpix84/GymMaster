@@ -15,7 +15,6 @@ public class AdminRepository
     public AdminRepository()
     {
         _connectionString = Constants.ConnectionString;
-        AdminsList();
     }
 
     public List<Admin> GetAdminsList()

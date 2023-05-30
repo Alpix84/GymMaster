@@ -4,7 +4,7 @@ public class MembershipCard
 {
     public int Id { get; private set; }
     public string Name { get; private set; }
-    public float Price { get; private set; }
+    public double Price { get; private set; }
     public int ValidDaysNum { get; private set; }
     public int ValidEntriesNum { get; private set; }
     public bool IsDeleted { get; private set; }
@@ -13,7 +13,7 @@ public class MembershipCard
     public int EndHour { get; private set; }
     public int DailyEntriesNum { get; private set; }
 
-    public MembershipCard(int id, string name, float price, int validDaysNum, int validEntriesNum, bool isDeleted, int gymId, int startHour, int endHour, int dailyEntriesNum)
+    public MembershipCard(int id, string name, double price, int validDaysNum, int validEntriesNum, bool isDeleted, int gymId, int startHour, int endHour, int dailyEntriesNum)
     {
         Id = id;
         Name = name;

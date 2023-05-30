@@ -12,7 +12,6 @@ public class ClientRepository
     public ClientRepository()
     {
         _connectionString = Constants.ConnectionString;
-        ClientsList();
     }
 
     public List<Client> GetClientsList()
