@@ -5,12 +5,47 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:GymMaster.Views.LoggedInAdmin"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:viewModel="clr-namespace:GymMaster.ViewModels"
+        xmlns:viewModelUI="clr-namespace:GymMaster.ViewModels.UI"
         mc:Ignorable="d"
         Title="LoggedInAdminWindow" Height="1920" Width="1080"
         WindowState="Maximized"
         WindowStyle="None"
         AllowsTransparency="True"
         >
+    
+    <Window.DataContext>
+        <viewModel:AdminViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModelUI:NewClientViewModel}">
+            <local:NewClientView/>
+        </DataTemplate>
+
+
+        <DataTemplate DataType="{x:Type viewModelUI:NewMembershipViewModel}">
+            <local:NewMembershipView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModelUI:EntryWithCardViewModel}">
+            <local:EntryWithCardView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModelUI:ClientCardsViewModel}">
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModelUI:TrackingViewModel}">
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModelUI:EmailViewModel}">
+
+        </DataTemplate>
+
+
+    </Window.Resources>
 
     <Border CornerRadius="10"
             BorderThickness="1">
@@ -55,42 +90,42 @@
                     
                     <!-- Menu -->
 
-                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}">
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}" Command="{Binding ShowNewClientViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Plus"  Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Text="New Client" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}">
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}" Command="{Binding ShowNewMembershipViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Plus"  Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Text="New Membership" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}">
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}" Command="{Binding ShowEntryWithCardViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="DoorOpen"  Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Text="Entry With Card" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}" >
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}" Command="{Binding ShowClientCardsViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="AddressCard"  Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Text="Client Cards" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}">
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}" Command="{Binding ShowTrackingViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="ChartSimple"  Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Text="Tracking" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}">
+                    <RadioButton Cursor="Hand" Style="{StaticResource menuButton}" Command="{Binding ShowEmailViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Envelope"  Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Text="Email" Style="{StaticResource menuButtonText}"/>
@@ -203,11 +238,11 @@
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
 
-                            <fa:IconImage Icon="Plus"
+                            <fa:IconImage Icon="{Binding Icon}"
                                           Height="20"
                                           Width="20"
                                           Margin="35,0,10,0"/>
-                            <TextBlock Text="New Client" FontSize="18"
+                            <TextBlock Text="{Binding Caption}" FontSize="18"
                                        FontFamily="Medium" VerticalAlignment="Center"/>
                         </StackPanel>
                         
@@ -226,7 +261,7 @@
                     </Grid>
 
                     <!--Content section-->
-                    <ContentControl Content="" Grid.Row="2"
+                    <ContentControl Content="{Binding CurrentChildView}" Grid.Row="2"
                                         Margin="25"/>
 
                 </Grid>

@@ -22,16 +22,15 @@
             </TextBlock>
 
             <TextBox x:Name="txtClientId"
-                                 FontSize="14"
+                                 FontSize="16"
                                  FontWeight="Medium"
-                                 Foreground="White"
+                                 Foreground="Black"
                                  CaretBrush="LightGray"
                                  BorderBrush="DarkGray"
                                  BorderThickness="0,0,0,1"
                                  Height="28"
                                  VerticalContentAlignment="Center"
                                  Margin="0,5,0,0"
-                                 Padding="20,0,0,0"
             />
 
 
@@ -45,16 +44,15 @@
             </TextBlock>
 
             <TextBox x:Name="txtMembershipId"
-                                 FontSize="14"
+                                 FontSize="16"
                                  FontWeight="Medium"
-                                 Foreground="White"
+                                 Foreground="Black"
                                  CaretBrush="LightGray"
                                  BorderBrush="DarkGray"
                                  BorderThickness="0,0,0,1"
                                  Height="28"
                                  VerticalContentAlignment="Center"
                                  Margin="0,5,0,0"
-                                 Padding="20,0,0,0"
             />
 
 
@@ -68,16 +66,15 @@
             </TextBlock>
 
             <TextBox x:Name="txtBoughtOnDate"
-                                 FontSize="14"
+                                 FontSize="16"
                                  FontWeight="Medium"
-                                 Foreground="White"
+                                 Foreground="Black"
                                  CaretBrush="LightGray"
                                  BorderBrush="DarkGray"
                                  BorderThickness="0,0,0,1"
                                  Height="28"
                                  VerticalContentAlignment="Center"
                                  Margin="0,5,0,0"
-                                 Padding="20,0,0,0"
             />
 
 
@@ -91,16 +88,15 @@
             </TextBlock>
 
             <TextBox x:Name="txtBarcode"
-                                 FontSize="14"
+                                 FontSize="16"
                                  FontWeight="Medium"
-                                 Foreground="White"
+                                 Foreground="Black"
                                  CaretBrush="LightGray"
                                  BorderBrush="DarkGray"
                                  BorderThickness="0,0,0,1"
                                  Height="28"
                                  VerticalContentAlignment="Center"
                                  Margin="0,5,0,0"
-                                 Padding="20,0,0,0"
             />
 
 
@@ -115,16 +111,15 @@
             </TextBlock>
 
             <TextBox x:Name="txtCurrentEntries"
-                                 FontSize="14"
+                                 FontSize="16"
                                  FontWeight="Medium"
-                                 Foreground="White"
+                                 Foreground="Black"
                                  CaretBrush="LightGray"
                                  BorderBrush="DarkGray"
                                  BorderThickness="0,0,0,1"
                                  Height="28"
                                  VerticalContentAlignment="Center"
                                  Margin="0,5,0,0"
-                                 Padding="20,0,0,0"
             />
 
 
@@ -138,16 +133,15 @@
             </TextBlock>
 
             <TextBox x:Name="txtPriceSold"
-                                 FontSize="14"
+                                 FontSize="16"
                                  FontWeight="Medium"
-                                 Foreground="White"
+                                 Foreground="Black"
                                  CaretBrush="LightGray"
                                  BorderBrush="DarkGray"
                                  BorderThickness="0,0,0,1"
                                  Height="28"
                                  VerticalContentAlignment="Center"
                                  Margin="0,5,0,0"
-                                 Padding="20,0,0,0"
             />
 
 
@@ -161,16 +155,15 @@
             </TextBlock>
 
             <TextBox x:Name="txtValidUntil"
-                                 FontSize="14"
+                                 FontSize="16"
                                  FontWeight="Medium"
-                                 Foreground="White"
+                                 Foreground="Black"
                                  CaretBrush="LightGray"
                                  BorderBrush="DarkGray"
                                  BorderThickness="0,0,0,1"
                                  Height="28"
                                  VerticalContentAlignment="Center"
                                  Margin="0,5,0,0"
-                                 Padding="20,0,0,0"
             />
 
 
@@ -184,16 +177,15 @@
             </TextBlock>
 
             <TextBox x:Name="txtFirstEntry"
-                                 FontSize="14"
+                                 FontSize="16"
                                  FontWeight="Medium"
-                                 Foreground="White"
+                                 Foreground="Black"
                                  CaretBrush="LightGray"
                                  BorderBrush="DarkGray"
                                  BorderThickness="0,0,0,1"
                                  Height="28"
                                  VerticalContentAlignment="Center"
                                  Margin="0,5,0,0"
-                                 Padding="20,0,0,0"
             />
 
 
