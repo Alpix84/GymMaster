@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+using GymMaster.Models;
+using GymMaster.ViewModels;
 
 namespace GymMaster.Views.LoggedInClient;
 
@@ -7,6 +11,7 @@ public partial class LoggedInClientWindow : Window
     public LoggedInClientWindow()
     {
         InitializeComponent();
+        MakeCardPairs();
 
         ClientMembership membership1 = new ClientMembership();
 
@@ -19,6 +24,22 @@ public partial class LoggedInClientWindow : Window
         membership1.endHour = "22";
         membership1.dailyEntries = "1";
     }
+    
+    private static ClientMCardViewModel _clientMCardVM = ClientMCardViewModel.Instance;
+    private static MembershipCardViewModel _membershipCardVM = MembershipCardViewModel.Instance;
+
+    private List<ClientMCards> _cardsList = _clientMCardVM.GetAllCards().Where(c => c.ClientId == CurrentUser.Id).ToList();
+    private List<MembershipCard> _membershipCards = _membershipCardVM.GetAllMembershipCards();
+    private List<KeyValuePair<ClientMCards, MembershipCard>> clientCardsPairs;
+
+    private void MakeCardPairs()
+    {
+        foreach (var card in _cardsList)
+        {
+            clientCardsPairs.Add(new KeyValuePair<ClientMCards, MembershipCard>(card,_membershipCards.First(c => c.Id == card.MembershipId)));
+        }
+    }
+
 
     public class ClientMembership
     {

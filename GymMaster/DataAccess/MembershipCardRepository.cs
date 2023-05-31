@@ -23,7 +23,7 @@ public class MembershipCardRepository
         return  AllMembershipCards();
     }
 
-    public MembershipCard GetMembershipCardById(int id)
+    public MembershipCard? GetMembershipCardById(int id)
     {
         try
         {
@@ -31,14 +31,15 @@ public class MembershipCardRepository
         }
         catch (InvalidOperationException)
         {
-            throw new Exception("No membership card found with the given ID!");
+            MessageBox.Show("No membership card found with the given ID!");
+            return null;
         }
     }
 
 
     private List<MembershipCard> AllMembershipCards()
     {
-        var membershipCards = new List<MembershipCard>();
+        var membershipCards = new List<MembershipCard?>();
 
         using (var connection = new SqlConnection(_connectionString))
         {

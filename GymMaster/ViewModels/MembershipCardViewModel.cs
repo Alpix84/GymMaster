@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using GymMaster.DataAccess;
@@ -27,7 +28,12 @@ public class MembershipCardViewModel
         
     }
 
-    public MembershipCard GetMembershipCard(int cardId)
+    public List<MembershipCard> GetAllMembershipCards()
+    {
+        return _membershipCardRepository.GetAllMembershipCards();
+    }
+
+    public MembershipCard? GetMembershipCard(int cardId)
     {
         return _membershipCardRepository.GetMembershipCardById(cardId);
     }

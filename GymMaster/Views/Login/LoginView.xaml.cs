@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GymMaster.Models;
 using GymMaster.ViewModels;
 using GymMaster.Views.LoggedInAdmin;
 using GymMaster.Views.LoggedInClient;
@@ -56,8 +57,7 @@ namespace GymMaster.View
             }
             if (_loginVM.Login(txtUser.Text, hashString))
             {
-                UserType? userType = new();
-                //TODO finalize window switch
+                UserType? userType = CurrentUser.UserType;
                 switch (userType)
                 {
                     case UserType.ADMIN:

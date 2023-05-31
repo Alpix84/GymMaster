@@ -34,49 +34,57 @@ public class EntryViewModel
         _entryRepository.GetEntriesList();
     }
 
-    public void AddNewEntry(string clientBarcode,int membershipId,string inserterEmail)
+    public void AddNewEntry(string clientBarcode,int membershipId)
     {
         Client? client = _clientVM.GetClientByBarcode(clientBarcode);
         List<ClientMCards> mCardsList = _clientMCardVM.GetAllCards();
-        ClientMCards clientMCard = mCardsList.Where(c => c.ClientId == client?.Id).First(c => c.MembershipId == membershipId);
+        ClientMCards clientMCard = mCardsList.Where(c => c.ClientId == client?.Id).FirstOrDefault(c => c.MembershipId == membershipId)!;
         MembershipCard? membershipCard = _membershipCardVM.GetMembershipCard(membershipId);
-        if (_adminVM.GetAdminByEmail(inserterEmail)?.Id != null)
+        if (CurrentUser.Id != null)
         {
             if (client is { IsDeleted: false })
             {
-                if (clientMCard.CurrentEntries < membershipCard.ValidEntriesNum)
+                if (membershipCard != null)
                 {
-                    if (DateTime.Today < clientMCard.ValidUntil)
+                    if (clientMCard.CurrentEntries > membershipCard?.ValidEntriesNum)
                     {
-                        if ((DateTime.Today.Hour >= membershipCard.StartHour || membershipCard.StartHour == 0) &&
-                            (DateTime.Today.Hour <= membershipCard.EndHour || membershipCard.EndHour == 0))
+                        MessageBox.Show("Max entries reached!");
+                    }
+                    else
+                    {
+                        if (DateTime.Today < clientMCard.ValidUntil)
                         {
-                            if (_entryRepository.GetEntriesList().Count(c =>
-                                    c.ClientId == client.Id && c.MembershipId == membershipId &&
-                                    c.EntryDate == DateTime.Today) < membershipCard.DailyEntriesNum)
+                            if ((DateTime.Today.Hour >= membershipCard.StartHour || membershipCard.StartHour == 0) &&
+                                (DateTime.Today.Hour <= membershipCard.EndHour || membershipCard.EndHour == 0))
                             {
-                                _entryRepository.AddNewEntry(client.Id, membershipId,
-                                    _adminVM.GetAdminByEmail(inserterEmail)!.Id, Constants.GenerateBarcode(), membershipCard.GymId);
-                                _clientMCardVM.IncrementEntriesNum(clientMCard.Id);
+                                if (_entryRepository.GetEntriesList().Count(c =>
+                                        c.ClientId == client.Id && c.MembershipId == membershipId &&
+                                        c.EntryDate == DateTime.Today) < membershipCard.DailyEntriesNum)
+                                {
+                                    _entryRepository.AddNewEntry(client.Id, membershipId,
+                                        (int)CurrentUser.Id, Constants.GenerateBarcode(), membershipCard.GymId);
+                                    _clientMCardVM.IncrementEntriesNum(clientMCard.Id);
+                                    MessageBox.Show($"Successful entry with card {clientMCard.Barcode}");
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Maximum daily entries reached!");
+                                }
                             }
                             else
                             {
-                                MessageBox.Show($"Maximum daily entries reached!");
+                                MessageBox.Show("Cannot enter current hour with this card!");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Cannot enter current hour with this card!");
+                            MessageBox.Show("The card is expired!");
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("The card is expired!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Max entries reached!");
+                    MessageBox.Show("No such card!");
                 }
             }
             else
