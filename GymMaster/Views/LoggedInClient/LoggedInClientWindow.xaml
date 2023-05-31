@@ -44,6 +44,8 @@
                                 Margin="0,0,5,0">
 
 
+                
+
                 <Button x:Name="btnClose"
                         BorderThickness="0"
                         Content="x"
@@ -111,6 +113,17 @@
             </StackPanel>
 
             <Grid Grid.Row="1">
+                
+                <TextBlock Text="Your membership cards:"
+                       FontSize="28"
+                       FontWeight="Medium"
+                       TextAlignment="Center"
+                       FontFamily="Ariel"
+                       Margin="0,40,0,40"
+                       >
+
+                </TextBlock>
+
                 <DataGrid
                 x:Name="DataGrid"
                 IsReadOnly="True"
@@ -122,6 +135,7 @@
                         <DataGridTextColumn
                         Header="Name"
                         MinWidth="90"
+                        Binding="{Binding name}"
                         Width="*"
                             />
 
@@ -129,42 +143,49 @@
                         <DataGridTextColumn
                         Header="Price"
                         MinWidth="90"
+                        Binding="{Binding price}"
                         Width="*"
                             />
 
                         <DataGridTextColumn
                         Header="Valid Days"
                         MinWidth="90"
+                        Binding="{Binding validDays}"    
                         Width="*"
                             />
 
                         <DataGridTextColumn
                         Header="Valid Entries"
                         MinWidth="90"
+                        Binding="{Binding validEntries}"
                         Width="*"
                             />
 
                         <DataGridTextColumn
                         Header="GYM"
                         MinWidth="90"
+                        Binding="{Binding gym}"
                         Width="*"
-                            />
+                        />
 
                         <DataGridTextColumn
                         Header="Start Hour"
                         MinWidth="90"
+                        Binding="{Binding startHour}"
                         Width="*"
                             />
 
                         <DataGridTextColumn
                         Header="End Hour"
                         MinWidth="90"
+                        Binding="{Binding endHour}"
                         Width="*"
                             />
 
                         <DataGridTextColumn
                         Header="Daily Entries"
                         MinWidth="90"
+                        Binding="{Binding dailyEntries}"
                         Width="*"
                             />
                     </DataGrid.Columns>

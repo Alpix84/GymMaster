@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace GymMaster.Views.LoggedInAdmin
 {
     /// <summary>
-    /// Interaction logic for EntryWithCardView.xaml
+    /// Interaction logic for ClientsTrackingView.xaml
     /// </summary>
-    public partial class EntryWithCardView : UserControl
+    public partial class ClientsTrackingView : UserControl
     {
-        public EntryWithCardView()
+        public ClientsTrackingView()
         {
             InitializeComponent();
-        }
-
-        private void btnNewEntry_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
