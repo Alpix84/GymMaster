@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using System.Windows;
 using GymMaster.Models;
 using GymMaster.ViewModels;
@@ -13,16 +14,11 @@ public partial class LoggedInClientWindow : Window
         InitializeComponent();
         MakeCardPairs();
 
-        ClientMembership membership1 = new ClientMembership();
+        ClientMembership membership = new ClientMembership();
 
-        membership1.name = "Premium";
-        membership1.price = "12";
-        membership1.validDays = "30";
-        membership1.validEntries = "12";
-        membership1.gym = "Power Huni";
-        membership1.startHour = "8";
-        membership1.endHour = "22";
-        membership1.dailyEntries = "1";
+
+
+        DataGrid.Items.Add(membership);
     }
     
     private static ClientMCardViewModel _clientMCardVM = ClientMCardViewModel.Instance;
@@ -44,13 +40,16 @@ public partial class LoggedInClientWindow : Window
     public class ClientMembership
     {
         public string name { get; set; }
-        public string price { get; set; }
+        public double priceSold { get; private set; }
         public string validDays { get; set; }
         public string validEntries { get; set; }
         public string gym { get; set; }
         public string startHour { get; set; }
         public string endHour { get; set; }
         public string dailyEntries { get; set; }
+        public string barcode { get; private set; }
+        public int currentEntries { get; private set; }
+        public DateTime? validUntil { get; private set; }
 
 
     }
