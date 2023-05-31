@@ -20,7 +20,8 @@ namespace GymMaster.Views
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AdminListTextBlock.Text = $"Client = {_clientVM.GetClientByEmail("horthy@gmail.com").Email}";
+            _clientMCardVM.AddCardToClient("KFQX0789",6,65,new DateTime(2023,8,4),1);
+            _clientMCardVM.AddCardToClient("KFQX0789",8,30,new DateTime(2023,7,1),2);
         }
         
         private void Button_Click_2(object sender, RoutedEventArgs e)
