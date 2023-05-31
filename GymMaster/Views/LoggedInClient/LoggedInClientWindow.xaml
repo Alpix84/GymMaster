@@ -143,7 +143,7 @@
                         <DataGridTextColumn
                         Header="Price"
                         MinWidth="90"
-                        Binding="{Binding price}"
+                        Binding="{Binding priceSold}"
                         Width="*"
                             />
 
@@ -188,6 +188,28 @@
                         Binding="{Binding dailyEntries}"
                         Width="*"
                             />
+
+                        <DataGridTextColumn
+                        Header="Barcode"
+                        MinWidth="90"
+                        Binding="{Binding barcode}"
+                        Width="*"
+                         />
+
+                        <DataGridTextColumn
+                        Header="Current Entries"
+                        MinWidth="90"
+                        Binding="{Binding currentEntries}"
+                        Width="*"
+                         />
+
+
+                        <DataGridTextColumn
+                        Header="Valid until"
+                        MinWidth="90"
+                        Binding="{Binding validUntil}"
+                        Width="*"
+                         />
                     </DataGrid.Columns>
 
 
